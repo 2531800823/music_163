@@ -1,32 +1,146 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <div class="tou">
+        <a class="logo" hidefocus="true" href="javascript:;">网易音乐</a>
+        <div class="xiala"></div>
+        <router-link
+          to="/"
+          :class="{
+            active:
+              $route.path === '/' || $route.path.indexOf('/discover') !== -1,
+          }"
+        >
+          <span>发现音乐</span>
+          <span class="col"></span>
+        </router-link>
+        <router-link to="/mymusic">
+          <span>我的音乐</span>
+          <span class="col"></span>
+        </router-link>
+        <router-link to="/firend">
+          <span>朋友</span>
+          <span class="col"></span>
+        </router-link>
+        <router-link to="/shop">
+          <span>下载客户端</span>
+          <span class="col"></span>
+        </router-link>
+      </div>
     </div>
-    <router-view/>
+    <router-view />
+    <MusicFooter></MusicFooter>
   </div>
 </template>
+<script>
+import MusicFooter from "@/components/MusicFooter.vue";
+export default {
+  created() {},
+  components: {
+    MusicFooter,
+  },
+};
+</script>
 
 <style lang="less">
+@import url("https://at.alicdn.com/t/font_2916485_5lxqcm53jc9.css");
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: rgb(245, 245, 245);
+}
+li {
+  list-style: none;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  font-size: 12px;
+  color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-text-size-adjust: none;
 }
 
 #nav {
-  padding: 30px;
+  position: relative;
+  height: 70px;
+  box-sizing: border-box;
+  background: #242424;
+  border-bottom: 1px solid #000;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+  .tou {
+    margin: 0 auto;
+    width: 1100px;
+    height: 100%;
+    display: flex;
+    .logo {
+      padding: 0;
+      width: 157px;
+      height: 100%;
+      padding-right: 20px;
+    }
+    a {
+      font-size: 14px;
+      padding: 0 19px;
+      line-height: 70px;
+      text-align: center;
+      color: #ccc;
+      text-decoration: none;
+      position: relative;
     }
   }
+  .router-link-exact-active {
+    color: #fff;
+    background: #000;
+    .col {
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 64px;
+      width: 12px;
+      height: 7px;
+      margin-left: -6px;
+      overflow: hidden;
+      background-image: url("https://s2.music.126.net/style/web2/img/frame/topbar.png?f7c167d667235e711c82cae876552cd4");
+      background-position: -226px 0;
+    }
+  }
+
+  a {
+    &.active {
+      color: #fff;
+      background: #000;
+      .col {
+        display: block;
+        position: absolute;
+        left: 50%;
+        top: 64px;
+        width: 12px;
+        height: 7px;
+        margin-left: -6px;
+        overflow: hidden;
+        background-image: url("https://s2.music.126.net/style/web2/img/frame/topbar.png?f7c167d667235e711c82cae876552cd4");
+        background-position: -226px 0;
+      }
+    }
+  }
+}
+.logo {
+  width: 157px;
+  height: 100%;
+  padding-right: 20px;
+  text-indent: -9999px;
+  background-image: url("https://s2.music.126.net/style/web2/img/frame/topbar.png?f7c167d667235e711c82cae876552cd4");
+}
+.xiala {
+  position: absolute;
+  z-index: 0;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  box-sizing: border-box;
+  background-color: #c20c0c;
+  border-bottom: 1px solid #a40011;
 }
 </style>
