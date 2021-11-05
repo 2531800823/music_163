@@ -65,6 +65,7 @@ export default {
       display: block;
       width: 160px;
       color: #333;
+      padding-left: 27px;
       font-size: 12px;
       background: url("../assets/singer.png") no-repeat 0 9999px;
       background-position: 0 -30px;

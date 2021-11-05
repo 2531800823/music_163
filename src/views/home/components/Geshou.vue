@@ -60,6 +60,7 @@ export default {
   .left {
     background-color: #eee;
     padding: 0 10px 40px;
+    width: 160px;
   }
   .right {
     background-color: #fff;

@@ -21,6 +21,8 @@
 
         <!-- 热门主播 -->
         <HotAnchor />
+
+        <GunDong></GunDong>
       </div>
     </div>
   </div>

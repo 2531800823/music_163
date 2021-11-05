@@ -43,7 +43,9 @@
           <div>
             <span>{{ item.time | formatDatePing }}</span>
             <div>
-              <p><i class="iconfont icon-aixin"></i></p>
+              <p>
+                <i class="iconfont icon-aixin"></i>（{{ item.likedCount }}）
+              </p>
               <span>|</span>
               <a href="javascript:;">回复</a>
             </div>
@@ -225,6 +227,12 @@ export default {
           span {
             margin: 0 8px;
             color: #ccc;
+          }
+          p {
+            font-size: 14px;
+            i {
+              margin-right: 5px;
+            }
           }
         }
       }

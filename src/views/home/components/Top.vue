@@ -54,8 +54,7 @@ import TopXiang from "./Topxiang.vue";
 import { getTopList, getTopXiang } from "@/api/toplist.js";
 export default {
   created() {
-    this.active = this.$route.query.id;
-    console.log(this.active);
+    this.active = this.$route.query.id || "";
     this.getList();
   },
   data() {
