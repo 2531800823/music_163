@@ -3,7 +3,7 @@
     <!-- 歌单 -->
     <div class="u-title">
       <h3>{{ title }}</h3>
-      <button class="selectType" @click="showSelect">
+      <button class="selectType" @click="showSelect" ref="btn">
         选择分类 <i class="el-icon-arrow-down"></i>
       </button>
       <div class="xuanze" ref="selectAll" :class="{ hideSelect: isSelectAll }">
@@ -135,11 +135,13 @@ export default {
   },
   watch: {
     isSelectAll(newval, oldval) {
+      console.log(newval);
       if (!oldval) {
-        window.onclick = function () {
-          this.isSelectAll = true;
-        }.bind(this);
-
+        this.$refs.btn.onmouseover = () => {
+          window.onclick = function () {
+            this.isSelectAll = true;
+          }.bind(this);
+        };
         this.$refs.selectAll.onmouseleave = function () {
           window.onclick = function () {
             this.isSelectAll = true;
