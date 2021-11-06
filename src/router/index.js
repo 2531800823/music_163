@@ -31,20 +31,21 @@ const routes = [
       },
       {
         path: 'artist',
-        component: () => import('@/views/geshou/GeshouXiang.vue'),
+        component: () => import('@/views/home/geshou/GeshouXiang.vue'),
         children: [
           {
             path: '',
-            component: () => import('@/views/geshou/components/GeHot.vue')
+            name: 'liu',
+            component: () => import('@/views/home/geshou/components/GeHot.vue')
           }, {
             path: 'suoyou',
-            component: () => import('@/views/geshou/components/SuoYou.vue')
+            component: () => import('@/views/home/geshou/components/SuoYou.vue')
           }, {
             path: 'xiangmv',
-            component: () => import('@/views/geshou/components/XiangMV.vue')
+            component: () => import('@/views/home/geshou/components/XiangMV.vue')
           }, {
             path: 'yiren',
-            component: () => import('@/views/geshou/components/YiRen.vue')
+            component: () => import('@/views/home/geshou/components/YiRen.vue')
           },
         ]
       }

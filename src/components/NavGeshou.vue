@@ -31,7 +31,11 @@
     </ul>
 
     <ul class="zhu">
-      <li v-for="(item, index) in filterList" :key="item.id">
+      <li
+        v-for="(item, index) in filterList"
+        :key="item.id"
+        @click="toXiangQing(item.id)"
+      >
         <img :src="item.img1v1Url" :alt="item.name" v-if="index < 10" />
         <div>
           <p>{{ item.name }}</p>
@@ -59,7 +63,6 @@ export default {
       this.smallIndex = arr[1];
       this.title = str;
       this.getList();
-      // this.getList2();
     });
   },
   beforeDestroy() {
@@ -125,8 +128,9 @@ export default {
         initial: this.type,
       });
       this.dataList = data.artists;
-
-      console.log("111");
+    },
+    toXiangQing(val) {
+      this.$router.push("/discover/artist?id=" + val);
     },
   },
 };
@@ -173,6 +177,7 @@ h1 {
   flex-wrap: wrap;
 
   li {
+    cursor: pointer;
     box-sizing: content-box;
     width: 130px;
     padding: 0 15px 30px 0;

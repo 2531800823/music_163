@@ -53,13 +53,16 @@
       <ul class="">
         <li class="tou">
           <div>序号</div>
-          <div>歌曲</div>
+          <div class="gequ">歌曲</div>
           <div>歌手</div>
           <div>专辑</div>
           <div>时长</div>
         </li>
         <li v-for="(item, index) in titleData" :key="item.id">
-          <div>{{ index + 1 }}</div>
+          <div class="is-show">
+            <u>{{ index + 1 }}</u
+            ><i class="el-icon-video-play"></i>
+          </div>
           <div>
             <img :src="item.al.picUrl" alt="" v-if="index < 3" />
             <span>{{ item.name }}</span>
@@ -228,12 +231,25 @@ export default {
           }
         }
       }
+      .gequ {
+        display: block !important;
+      }
+
       li {
         &:nth-of-type(2n) {
           background-color: hsla(0, 5.9%, 90%, 0.5);
         }
         &:hover {
           background-color: hsla(0, 3%, 80.6%, 0.5) !important;
+        }
+        &:first-child {
+          background-color: #fff !important;
+        }
+        &:hover .is-show u {
+          display: none;
+        }
+        &:hover .is-show i {
+          display: inline;
         }
       }
       li {
@@ -249,6 +265,17 @@ export default {
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
+        }
+
+        .is-show {
+          u {
+            text-decoration: none;
+          }
+          i {
+            color: red;
+            font-size: 20px;
+            display: none;
+          }
         }
         div {
           text-align: center;

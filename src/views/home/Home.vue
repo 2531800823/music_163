@@ -12,7 +12,6 @@
         <router-link to="/discover/newdie">新碟上架</router-link>
       </div>
     </div>
-
     <router-view></router-view>
   </div>
 </template>

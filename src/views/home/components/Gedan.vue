@@ -59,7 +59,6 @@
 import { getPlayList, getPlayListType } from "@/api/playlist.js";
 export default {
   created() {
-    console.log(this.$route.query.cat);
     this.title = this.$route.query.cat || "全部";
     this.getList(this.$route.query.cat);
     this.getTypeList();
@@ -137,11 +136,16 @@ export default {
   watch: {
     isSelectAll(newval, oldval) {
       if (!oldval) {
+        window.onclick = function () {
+          this.isSelectAll = true;
+        }.bind(this);
+
         this.$refs.selectAll.onmouseleave = function () {
           window.onclick = function () {
             this.isSelectAll = true;
           }.bind(this);
         }.bind(this);
+
         this.$refs.selectAll.onmouseover = function () {
           window.onclick = null;
         }.bind(this);
