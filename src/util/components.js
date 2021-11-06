@@ -1,4 +1,4 @@
-
+// 一键 注册全局 组件
 import Vue from 'vue'
 
 const requireComponents = require.context(

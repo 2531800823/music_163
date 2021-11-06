@@ -1,5 +1,7 @@
 <template>
   <div class="home">
+    <GunDong></GunDong>
+
     <div class="nav">
       <div class="toubu">
         <router-link to="/" exact>推荐</router-link>

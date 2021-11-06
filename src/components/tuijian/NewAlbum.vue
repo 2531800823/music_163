@@ -70,12 +70,20 @@ export default {
   created() {
     this.getList();
   },
-
+  mounted() {
+    this.$refs.liu.ontransitionend = () => {
+      this.flag = true;
+    };
+  },
+  beforeDestroy() {
+    this.$refs.liu.transitionend = null;
+  },
   data() {
     return {
       data: [],
       data2: [],
       active: 1,
+      flag: true, // 节流
     };
   },
   methods: {
@@ -91,32 +99,42 @@ export default {
     },
 
     prev() {
-      if (this.active < 1) {
-        this.active = 2;
-        this.$refs.liu.style.transition = "none";
-        this.$refs.liu.style.marginLeft = "-200%";
-        setTimeout(() => {
-          this.$refs.liu.style.transition = "all 2s";
-          this.$refs.liu.style.marginLeft = --this.active * -100 + "%";
-        }, 0);
-        return;
+      this.$refs.liu.transitionstart = () => {
+        console.log(1);
+        this.flag = true;
+      };
+      if (this.flag) {
+        this.flag = false;
+        if (this.active < 1) {
+          this.active = 2;
+          this.$refs.liu.style.transition = "none";
+          this.$refs.liu.style.marginLeft = "-200%";
+          setTimeout(() => {
+            this.$refs.liu.style.transition = "all 2s";
+            this.$refs.liu.style.marginLeft = --this.active * -100 + "%";
+          }, 0);
+          return;
+        }
+        this.$refs.liu.style.transition = "all 2s";
+        this.$refs.liu.style.marginLeft = --this.active * -100 + "%";
       }
-      this.$refs.liu.style.transition = "all 2s";
-      this.$refs.liu.style.marginLeft = --this.active * -100 + "%";
     },
     next() {
-      if (this.active > 1) {
-        this.active = 0;
-        this.$refs.liu.style.transition = "none";
-        this.$refs.liu.style.marginLeft = "0%";
-        setTimeout(() => {
-          this.$refs.liu.style.transition = "all 2s";
-          this.$refs.liu.style.marginLeft = ++this.active * -100 + "%";
-        }, 0);
-        return;
+      if (this.flag) {
+        this.flag = false;
+        if (this.active > 1) {
+          this.active = 0;
+          this.$refs.liu.style.transition = "none";
+          this.$refs.liu.style.marginLeft = "0%";
+          setTimeout(() => {
+            this.$refs.liu.style.transition = "all 2s";
+            this.$refs.liu.style.marginLeft = ++this.active * -100 + "%";
+          }, 0);
+          return;
+        }
+        this.$refs.liu.style.transition = "all 2s";
+        this.$refs.liu.style.marginLeft = ++this.active * -100 + "%";
       }
-      this.$refs.liu.style.transition = "all 2s";
-      this.$refs.liu.style.marginLeft = ++this.active * -100 + "%";
     },
   },
 };
