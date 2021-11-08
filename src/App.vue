@@ -139,7 +139,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["/user/denglu"]),
+    ...mapActions("user", ["denglu"]),
     querySearchAsync(str, cb) {
       // console.log(this.value.trim());
       if (!this.value?.trim()) return cb(this.results);
@@ -231,7 +231,7 @@ export default {
       this.$refs.ruleForm.validate(async (flag) => {
         if (flag) {
           let md5_password = md5(this.ruleForm.password);
-          this["/user/denglu"]({
+          this.denglu({
             phone: this.ruleForm.phone,
             md5_password,
           });

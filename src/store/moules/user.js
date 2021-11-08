@@ -6,22 +6,28 @@ const state = {
     token: getCookie() || null
 }
 
-const mutaction = {
+const mutations = {
     // 设置tokne
-    // setToken(state, token)
+    setToken(state, token) {
+        state.token = token
+        setCookie(token)
+    }
+
 }
 
 const actions = {
     async denglu(context, obj) {
+        // console.log(1);
         const data = await Login(obj)
-        console.log(data);
+        console.log(data.data.token);
+        context.commit('setToken', data.data.token)
     }
 }
 
 const user = {
-    namespace: true,
+    namespaced: true,
     state,
-    mutaction,
+    mutations,
     actions,
 }
 

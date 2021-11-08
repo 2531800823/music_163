@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import user from './moules/user'
 
+import user from './moules/user'
 import getters from './getter'
 
 
 Vue.use(Vuex)
+
 
 const store = new Vuex.Store({
     modules: {
@@ -13,6 +14,5 @@ const store = new Vuex.Store({
     },
     getters
 })
-
 
 export default store
