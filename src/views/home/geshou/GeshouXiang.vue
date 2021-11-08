@@ -101,7 +101,7 @@ export default {
       value: "热门单曲",
       userName: {},
       musicList: [],
-      id: 5781,
+      id: "",
       hotList: [],
     };
   },

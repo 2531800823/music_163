@@ -135,9 +135,8 @@ export default {
   },
   watch: {
     isSelectAll(newval, oldval) {
-      console.log(newval);
-      if (!oldval) {
-        this.$refs.btn.onmouseover = () => {
+      if (oldval) {
+        this.$refs.btn.onmouseleave = () => {
           window.onclick = function () {
             this.isSelectAll = true;
           }.bind(this);
@@ -155,7 +154,7 @@ export default {
         this.$refs.selectAll.onmouseover = null;
         this.$refs.selectAll.onclick = null;
         window.onclick = null;
-        this.$refs.selectAll.onmouseover = null;
+        this.$refs.selectAll.onmouseleave = null;
       }
     },
   },

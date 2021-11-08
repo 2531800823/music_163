@@ -45,6 +45,7 @@ const routes = [
             component: () => import('@/views/home/geshou/components/XiangMV.vue')
           }, {
             path: 'yiren',
+            name: 'YiRen',
             component: () => import('@/views/home/geshou/components/YiRen.vue')
           },
         ]

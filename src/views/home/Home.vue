@@ -56,5 +56,12 @@ export default {};
   .router-link-active {
     background: #9b0909;
   }
+  .search {
+    align-items: flex-start;
+    flex: 1;
+  }
+  .login {
+    align-items: flex-start;
+  }
 }
 </style>

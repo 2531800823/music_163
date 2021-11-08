@@ -1,6 +1,6 @@
 <template>
   <div class="yi-ren">
-    <h2><i> </i>薛之谦简介</h2>
+    <h2><i> </i>{{ name }}简介</h2>
     <p class="tou">
       {{ data.briefDesc }}
     </p>
@@ -12,17 +12,18 @@
 </template>
 
 <script>
-import { getDesc } from "@/api/mini/geshou.js";
+import { getDesc, getGeShou } from "@/api/mini/geshou.js";
 export default {
   created() {
     this.id = this.$route.query.id || this.id;
-    console.log(this.$route.query.id);
     this.getList();
+    this.getName();
   },
   data() {
     return {
       id: 0,
       data: {},
+      name: "",
     };
   },
   methods: {
@@ -31,6 +32,10 @@ export default {
         id: this.id,
       });
       this.data = data;
+    },
+    async getName() {
+      const { data } = await getGeShou(this.id);
+      this.name = data.artist.name;
     },
   },
 };
