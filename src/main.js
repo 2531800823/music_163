@@ -11,6 +11,9 @@ Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
+// 路由权限控制
+import "@/router/quanxian.js"
+
 // 放入全局过滤器
 Object.keys(filters).forEach(item => {
   Vue.filter(item, filters[item])

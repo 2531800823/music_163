@@ -11,3 +11,12 @@ export function Login(params) {
         params
     })
 }
+
+// 发送验证码
+export function sumPhone(params) {
+    return request({
+        method: 'get',
+        url: '/captcha/sent',
+        params
+    })
+}

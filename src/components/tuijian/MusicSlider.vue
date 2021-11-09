@@ -80,7 +80,7 @@ export default {
     transform: translateY(-50%);
     background: url("https://s2.music.126.net/style/web2/img/index/banner.png?2629007435f39b2467ae488654a8b3ec");
     width: 37px;
-    z-index: 999999;
+    z-index: 1;
     height: 63px;
   }
   .el-carousel {

@@ -69,6 +69,13 @@ const routes = [
     name: 'Shop',
     component: () => import('../views/shop/Shop.vue')
   },
+  {
+    // 跳转个人详情页
+    path: '/user',
+    name: 'user',
+    meta: { quanxian: true },
+    component: () => import('@/components/myuser/MyUser.vue')
+  },
 
 ]
 
