@@ -132,9 +132,9 @@ export default {
               phone: this.ruleForm.phone,
               captcha: this.ruleForm.yan,
             });
-            console.log(msg);
+            // console.log(msg);
             if (msg) {
-              this.$message.error(msg);
+              // this.$message.error(msg);
             } else {
               this.isShow = false;
               this.$message({

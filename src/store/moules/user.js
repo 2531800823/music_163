@@ -24,19 +24,17 @@ const mutations = {
 const actions = {
     // 用手机号登录
     async denglu(context, obj) {
-        try {
-            const data = await Login(obj)
-            console.log(data);
-            if (data.data.code !== 200) {
-                return data.data.msg
-            }
-            context.commit('setToken', data.data)
-        } catch (error) {
-            console.log(error.name);
-            console.log(error);
-            console.log(error.message);
-            return error.message
+        const data = await Login(obj)
+        if (!data) return 'aa'
+        if (data.data.code !== 200) {
+            return data.data.msg
         }
+        context.commit('setToken', data.data)
+        // console.log(error.name);
+        // console.log(error);
+        // console.log(error.message);
+        // console.log(error.response);
+        // return error
 
     },
     // 用验证码登录
